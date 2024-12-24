@@ -1,0 +1,3 @@
+﻿  SortArray.cpp
+C:\Users\y\Source\Repos\NBC_Project_00\NBC_Project_00\SortArray.cpp(30,8): warning C4102: 'defalt': unreferenced label
+  NBC_Project_00.vcxproj -> C:\Users\y\Source\Repos\NBC_Project_00\x64\Debug\NBC_Project_00.exe
