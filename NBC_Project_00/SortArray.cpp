@@ -3,38 +3,68 @@
 
 using namespace std;
 
+int SumArray(int* InArray, const int nSize);
+double AverageArray(int InSum, const int nSize);
 int* InsertNumArray(const int nSize);
-void PrintArray(int* nInArray, int nSize);
-void SortArray(int* nInArray, int nSize, bool bIsReverse);
+void PrintArray(int* nInArray, const int nSize);
+void SortArray(int* nInArray, const int nSize, bool bIsReverse);
 
 int main()
 {
-	int nArraySize = 5, nType;
+	int nArraySize, nType;
 	int* nNumArray;
+
+	cout << "배열의 크기를 입력하세요. : " ;
+	cin >> nArraySize;
 
 	nNumArray = InsertNumArray(nArraySize);
 
 	PrintArray(nNumArray, nArraySize);
 START:
-	cout << "1. 오름차순 정렬    2. 내림차순 정렬" << endl;
+	cout << "1. 합\t2. 평균값\t3. 오름차순 정렬\t4. 내림차순 정렬" << endl;
 	cin >> nType;
 
 	switch (nType)
 	{
 	case 1:
-		SortArray(nNumArray, nArraySize, false);
+		cout << "Result = " << SumArray(nNumArray, nArraySize) << endl;
 		break;
 	case 2:
-		SortArray(nNumArray, nArraySize, true);
+		cout << "Result = " << AverageArray(SumArray(nNumArray, nArraySize), nArraySize) << endl;
 		break;
-	defalt:
-		cout << "잘못된 입력값입니다." << endl;
-		goto START;
+	case 3:
+		SortArray(nNumArray, nArraySize, false);
+		PrintArray(nNumArray, nArraySize);
+		break;
+	case 4:
+		SortArray(nNumArray, nArraySize, true);
+		PrintArray(nNumArray, nArraySize);
+		break;
+	default:
+		cout << "잘못된 입력값입니다. 프로그램을 종료합니다." << endl;
+		return 0;
 	}
 
-	PrintArray(nNumArray, nArraySize);
+	goto START;
 
 	return 0;
+}
+
+int SumArray(int* InArray, const int nSize)
+{
+	int result = 0;
+
+	for (int i = 0; i < nSize; i++)
+	{
+		result += InArray[i];
+	}
+
+	return result;
+}
+
+double AverageArray(int InSum, const int nSize)
+{
+	return (double)InSum / (double)nSize;
 }
 
 int* InsertNumArray(const int nSize)
